@@ -46,6 +46,84 @@ public class MainActivity extends AppCompatActivity {
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 -----------------------------------------------
+Exercise 3 CODE:package com.example.mainactivity;
+-MainActivity.Java
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText editTextName = findViewById(R.id.editTextName);
+
+        AutoCompleteTextView autoCompleteCountry = findViewById(R.id.autoCompleteCountry);
+        String[] countries = {"Philippines", "Japan", "USA", "Canada", "Australia"};
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                countries
+        );
+        autoCompleteCountry.setAdapter(countryAdapter);
+
+        Spinner spinnerOptions = findViewById(R.id.spinnerOptions);
+        String[] options = {"Philippines", "China", "Singapore", "Sydney", "Indonesia"};
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                options
+        );
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOptions.setAdapter(spinnerAdapter);
+    }
+}
+
+-activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textViewInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your name, type a country, or pick in the option:"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:layout_marginBottom="16dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select or type a country"
+        android:layout_marginBottom="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+-----------------------------------------------
 EXERCISE 5 CODE:
 -MainActivity.java
 package com.example.mainactivity;
